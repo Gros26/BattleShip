@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleship.controller.StartController">
+   <children>
+      <ImageView fitHeight="423.0" fitWidth="785.0" layoutX="-4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@StartImage.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="159.0" fitWidth="266.0" layoutX="250.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="68.0" fitWidth="242.0" layoutX="282.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Button1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="67.0" fitWidth="231.0" layoutX="284.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Button2.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="331.0" layoutY="258.0" mnemonicParsing="false" onAction="#onPlayButton" prefHeight="35.0" prefWidth="163.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 1);;" text="NUEVA PARTIDA" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="332.0" layoutY="328.0" mnemonicParsing="false" onAction="#onInformationButton" prefHeight="35.0" prefWidth="163.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 1);;" text="INSTRUCCIONES" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
