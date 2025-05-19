@@ -3,9 +3,12 @@ package com.example.battleship.model;
 import java.io.Serializable;
 import java.util.*;
 
-
 /**
- * Represents the game board and manages the state of the game.
+ * Board class representing the game board and managing the state of the Battleship game.
+ * Handles ship placement, validation, state changes, and win condition checks.
+ *
+ * @author Grosman Garcia
+ * @version 1
  */
 public class Board implements Serializable {
     /**
@@ -28,12 +31,14 @@ public class Board implements Serializable {
      * The number of sunk ships.
      */
     private int sunkShips;
+
     /**
      * Increments the count of sunk ships by one.
      */
     public void setSunkShips() {
         this.sunkShips += 1;
     }
+
     /**
      * Returns the number of sunk ships.
      *
@@ -42,6 +47,7 @@ public class Board implements Serializable {
     public int getSunkShips() {
         return this.sunkShips;
     }
+
     /**
      * Sets the username of the player.
      *
@@ -50,6 +56,7 @@ public class Board implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
+
     /**
      * Returns the username of the player.
      *
@@ -58,8 +65,9 @@ public class Board implements Serializable {
     public String getUsername() {
         return this.username;
     }
+
     /**
-     * Represents the state of a cell on the game board.
+     * Enum representing the state of a cell on the game board.
      */
     public enum State {
         EMPTY,
@@ -68,6 +76,7 @@ public class Board implements Serializable {
         HIT,
         SUNK
     }
+
     /**
      * Constructs a new Board instance and initializes the game board and ships.
      */
@@ -95,6 +104,7 @@ public class Board implements Serializable {
             ship.setPosition(x, y);
         }
     }
+
     /**
      * Returns the ship at the specified index.
      *
@@ -104,6 +114,7 @@ public class Board implements Serializable {
     public Ship getShip(int i) {
         return ships.get(i);
     }
+
     /**
      * Returns the list of ships on the board.
      *
@@ -112,6 +123,7 @@ public class Board implements Serializable {
     public List<Ship> getShips() {
         return ships;
     }
+
     /**
      * Initializes the ships on the board.
      */
@@ -128,6 +140,7 @@ public class Board implements Serializable {
             }
         }
     }
+
     /**
      * Places a ship on the board at the specified coordinates.
      *
@@ -154,6 +167,7 @@ public class Board implements Serializable {
 
         return true;
     }
+
     /**
      * Validates if a ship can be placed at the specified coordinates.
      *
@@ -178,6 +192,7 @@ public class Board implements Serializable {
 
         return true;
     }
+
     /**
      * Removes a ship from the board at the specified coordinates.
      *
@@ -198,6 +213,7 @@ public class Board implements Serializable {
             board.get(r).set(c, State.EMPTY);
         }
     }
+
     /**
      * Prints the current state of the game board to the console.
      */
@@ -210,6 +226,7 @@ public class Board implements Serializable {
         }
         System.out.println();
     }
+
     /**
      * Checks if the specified coordinates are in a state of water, hit, or sunk.
      *
@@ -221,6 +238,7 @@ public class Board implements Serializable {
         State state = board.get(y).get(x);
         return state == State.WATER || state == State.HIT || state == State.SUNK;
     }
+
     /**
      * Checks if the specified coordinates are in a state of hit or sunk.
      *
@@ -232,6 +250,7 @@ public class Board implements Serializable {
         State state = board.get(y).get(x);
         return state == State.HIT || state == State.SUNK;
     }
+
     /**
      * Changes the state of the specified coordinates on the board.
      *
@@ -242,6 +261,7 @@ public class Board implements Serializable {
     public void changeState(int x, int y, State newState) {
         board.get(y).set(x, newState);
     }
+
     /**
      * Returns the state of the specified coordinates on the board.
      *
@@ -252,6 +272,7 @@ public class Board implements Serializable {
     public State getState(int x, int y) {
         return board.get(y).get(x);
     }
+
     /**
      * Updates the state of the ship at the specified coordinates to hit.
      *
@@ -276,6 +297,7 @@ public class Board implements Serializable {
             }
         }
     }
+
     /**
      * Updates the state of the ship to sunk if all its parts are hit.
      */
@@ -307,6 +329,7 @@ public class Board implements Serializable {
             }
         }
     }
+
     /**
      * Checks if all ships on the board are sunk.
      *

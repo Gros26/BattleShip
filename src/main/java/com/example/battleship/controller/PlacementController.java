@@ -23,23 +23,30 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * PlacementController class for managing the placement of ships on the player's board in the Battleship game.
+ * Handles drag-and-drop, rotation, and validation of ship positions, as well as navigation to the next game phase.
+ *
+ * @author Grosman Garcia
+ * @version 1
+ */
 public class PlacementController {
     /**
      * Singleton instance of the PlacementController.
      */
     private static PlacementController instance;
     /**
-     * AnchorPane for displaying the columns.
+     * AnchorPane for displaying the column labels of the player's board.
      */
     @FXML
     private AnchorPane columnsPane;
     /**
-     * AnchorPane for positioning elements.
+     * AnchorPane for displaying the player's board grid and ships.
      */
     @FXML
     private AnchorPane panePosition;
     /**
-     * AnchorPane for displaying the rows.
+     * AnchorPane for displaying the row labels of the player's board.
      */
     @FXML
     private AnchorPane rowsPane;
@@ -49,23 +56,23 @@ public class PlacementController {
     @FXML
     private TextField textFieldName;
     /**
-     * Size of the grid in pixels.
+     * Size in pixels of the game grid.
      */
     private final int GRID_SIZE = 400;
     /**
-     * Number of cells in the grid.
+     * Number of cells in each row and column of the grid.
      */
     private final int NUMBERS_CELL = 10;
     /**
-     * Size of each cell in the grid.
+     * Size in pixels of each cell in the grid.
      */
     private final int CELL_SIZE = GRID_SIZE / NUMBERS_CELL;
     /**
-     * Matrix representing the player's board.
+     * Board representing the player's ships and state.
      */
     private Board playerBoard;
     /**
-     * Matrix representing the machine's board.
+     * Board representing the machine's ships and state.
      */
     private Board machineBoard;
     /**
@@ -92,6 +99,7 @@ public class PlacementController {
      * Ship object representing the target ship being manipulated.
      */
     private Ship targetShip;
+
     /**
      * Returns the singleton instance of the PlacementController.
      *
@@ -100,16 +108,17 @@ public class PlacementController {
     public static PlacementController getInstance() {
         return instance;
     }
+
     /**
-     * Shows the current stage.
+     * Shows the current stage for the placement view.
      */
     public void show() {
         Stage stage = (Stage) panePosition.getScene().getWindow();
         stage.show();
     }
+
     /**
-     * Initializes the PlacementController.
-     * Sets up the instance, player and machine boards, and event handlers.
+     * Initializes the PlacementController, sets up boards, draws grid and ships, and event handlers.
      */
     public void initialize() {
         instance = this;
@@ -125,8 +134,9 @@ public class PlacementController {
         panePosition.setOnMouseDragged(this::handleMouseDragged);
         panePosition.setOnMouseReleased(this::handleMouseReleased);
     }
+
     /**
-     * Handles mouse moved events.
+     * Handles mouse moved events for drag-and-drop ship placement.
      *
      * @param event the MouseEvent
      */
@@ -139,8 +149,9 @@ public class PlacementController {
             panePosition.setCursor(Cursor.DEFAULT);
         }
     }
+
     /**
-     * Handles mouse pressed events.
+     * Handles mouse pressed events for selecting and starting to drag a ship.
      *
      * @param event the MouseEvent
      */
@@ -158,8 +169,9 @@ public class PlacementController {
             this.targetPath.setStroke(Color.GREEN);
         } catch (Exception ignored) {}
     }
+
     /**
-     * Handles mouse dragged events.
+     * Handles mouse dragged events for moving a ship on the board.
      *
      * @param event the MouseEvent
      */
@@ -190,8 +202,9 @@ public class PlacementController {
 
         } catch (Exception ignored) {}
     }
+
     /**
-     * Handles mouse released events.
+     * Handles mouse released events for dropping or rotating a ship.
      *
      * @param event the MouseEvent
      */
@@ -239,8 +252,9 @@ public class PlacementController {
 
         } catch (Exception ignored){}
     }
+
     /**
-     * Draws the grid on the pane.
+     * Draws the grid on the placement pane, including lines and labels.
      */
     public void drawGrid() {
         Line line;
@@ -284,8 +298,9 @@ public class PlacementController {
             rowsPane.getChildren().add(label);
         }
     }
+
     /**
-     * Draws the ships on the pane.
+     * Draws the ships on the placement pane.
      */
     public void drawShips() {
         Ship ship;
@@ -313,8 +328,10 @@ public class PlacementController {
             panePosition.getChildren().add(path);
         }
     }
+
     /**
-     * Handles the action event for viewing both boards.
+     * Handles the action event for viewing both boards before starting the game.
+     * Prompts the user for confirmation and opens the machine view if confirmed.
      *
      * @param event the ActionEvent triggered by the user
      */
@@ -346,8 +363,10 @@ public class PlacementController {
             }
         }
     }
+
     /**
-     * Handles the action event for starting a new game.
+     * Handles the action event for starting the game from the placement view.
+     * Prompts the user for confirmation and opens the game view if confirmed.
      *
      * @param event the ActionEvent triggered by the user
      */

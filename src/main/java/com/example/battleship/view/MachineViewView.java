@@ -11,14 +11,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * MachineViewView class for displaying the machine and player boards in the Battleship game.
+ * Manages the loading of the FXML layout, initialization of the controller, and provides access to the controller and singleton instance.
+ *
+ * @author Grosman Garcia
+ * @version 1
+ */
 public class MachineViewView extends Stage {
     /**
      * The controller associated with this view.
      */
     private MachineViewController machineViewController;
+
     /**
-     * Constructor for MachineViewView.
-     * Loads the FXML layout and initializes the controller.
+     * Constructor for MachineViewView. Loads the FXML layout and initializes the controller.
      *
      * @param machineBoard the game board for the machine
      * @param playerBoard the game board for the player
@@ -35,6 +42,7 @@ public class MachineViewView extends Stage {
         this.setScene(scene);
         this.show();
     }
+
     /**
      * Gets the controller associated with this view.
      *
@@ -43,6 +51,7 @@ public class MachineViewView extends Stage {
     public MachineViewController getMachineViewController() {
         return this.machineViewController;
     }
+
     /**
      * Gets the singleton instance of MachineViewView.
      *
@@ -54,6 +63,7 @@ public class MachineViewView extends Stage {
     public static MachineViewView getInstance(Board machineBoard, Board playerBoard) throws IOException {
         return MachineViewHolder.INSTANCE = new MachineViewView(machineBoard,playerBoard);
     }
+
     /**
      * Holder class for the singleton instance of MachineViewView.
      */

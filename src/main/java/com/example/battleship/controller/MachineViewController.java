@@ -17,59 +17,67 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * MachineViewController class for managing the machine's and player's boards in the Battleship game.
+ * Handles the drawing of grids and ships for both boards and manages navigation actions.
+ *
+ * @author Grosman Garcia
+ * @version 1
+ */
 public class MachineViewController {
     /**
-     * Matrix representing the machine's board.
+     * Board representing the machine's ships and state.
      */
     private Board machineBoard;
     /**
-     * Matrix representing the machine's board.
+     * Board representing the player's ships and state.
      */
     private Board playerBoard;
     /**
-     * AnchorPane for displaying the columns.
+     * AnchorPane for displaying the column labels of the player's board.
      */
     @FXML
     private AnchorPane columnsPane;
     /**
-     * AnchorPane for positioning elements.
+     * AnchorPane for displaying the player's board grid and ships.
      */
     @FXML
     private AnchorPane panePosition;
     /**
-     * AnchorPane for displaying the rows.
+     * AnchorPane for displaying the row labels of the player's board.
      */
     @FXML
     private AnchorPane rowsPane;
     /**
-     * AnchorPane for displaying the machine's columns.
+     * AnchorPane for displaying the column labels of the machine's board.
      */
     @FXML
     private AnchorPane columnsPaneMachine;
     /**
-     * AnchorPane for positioning machine elements.
+     * AnchorPane for displaying the machine's board grid and ships.
      */
     @FXML
     private AnchorPane panePositionMachine;
     /**
-     * AnchorPane for displaying the machine's rows.
+     * AnchorPane for displaying the row labels of the machine's board.
      */
     @FXML
     private AnchorPane rowsPaneMachine;
     /**
-     * Size of the grid in pixels.
+     * Size in pixels of the game grid.
      */
     private final int GRID_SIZE = 400;
     /**
-     * Number of cells in the grid.
+     * Number of cells in each row and column of the grid.
      */
     private final int NUMBERS_CELL = 10;
     /**
-     * Size of each cell in the grid.
+     * Size in pixels of each cell in the grid.
      */
     private final int CELL_SIZE = GRID_SIZE / NUMBERS_CELL;
+
     /**
-     * Sets the boards for the machine and player.
+     * Sets the boards for the machine and player, and draws the grids and ships for both boards.
      *
      * @param machineBoard the machine's board
      * @param playerBoard the player's board
@@ -85,7 +93,7 @@ public class MachineViewController {
 
     }
     /**
-     * Draws the grid for the machine's board.
+     * Draws the grid for the machine's board, including horizontal and vertical lines and labels for columns and rows.
      */
     public void drawGridMachine() {
         Line line;
@@ -132,7 +140,7 @@ public class MachineViewController {
         }
     }
     /**
-     * Draws the grid for the player's board.
+     * Draws the grid for the player's board, including horizontal and vertical lines and labels for columns and rows.
      */
     public void drawGrid() {
         Line line;
@@ -235,7 +243,7 @@ public class MachineViewController {
         }
     }
     /**
-     * Handles the action event for returning to the previous window.
+     * Handles the action event for returning to the previous window. Displays a confirmation dialog to the user.
      *
      * @param event the ActionEvent triggered by the user
      */
@@ -254,7 +262,7 @@ public class MachineViewController {
 
     }
     /**
-     * Handles the action event for proceeding to the next window.
+     * Handles the action event for proceeding to the next window. Displays a confirmation dialog to the user.
      *
      * @param event the ActionEvent triggered by the user
      */

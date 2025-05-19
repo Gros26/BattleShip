@@ -11,14 +11,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * GameView class for displaying the main game window in the Battleship game.
+ * Manages the loading of the FXML layout, initialization of the controller, and provides access to the controller and singleton instance.
+ *
+ * @author Grosman Garcia
+ * @version 1
+ */
 public class GameView extends Stage {
     /**
      * The controller associated with this view.
      */
     private GameController gameController;
+
     /**
-     * Constructor for GameView.
-     * Loads the FXML layout and initializes the controller.
+     * Constructor for GameView. Loads the FXML layout and initializes the controller.
      *
      * @param machineBoard the game board for the machine
      * @param playerBoard the game board for the player
@@ -35,6 +42,7 @@ public class GameView extends Stage {
         this.setScene(scene);
         this.show();
     }
+
     /**
      * Gets the controller associated with this view.
      *
@@ -55,6 +63,7 @@ public class GameView extends Stage {
     public static GameView getInstance(Board machineBoard, Board playerBoard) throws IOException {
         return GameViewHolder.INSTANCE = new GameView(machineBoard,playerBoard);
     }
+
     /**
      * Holder class for the singleton instance of GameView.
      */

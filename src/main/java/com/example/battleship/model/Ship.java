@@ -5,8 +5,12 @@ import javafx.scene.shape.*;
 import java.util.Random;
 
 /**
- * Represents a ship in the Battleship game.
- * Manages the ship's position, type, direction, and state.
+ * Ship class representing a ship in the Battleship game.
+ * Manages the ship's position, type, direction, length, and state.
+ * Provides methods for rotation, position checking, and drawing the ship.
+ *
+ * @author Grosman Garcia
+ * @version 1
  */
 public class Ship implements Serializable {
     /**
@@ -33,6 +37,7 @@ public class Ship implements Serializable {
      * The type of the ship (carrier, submarine, destroyer, frigate).
      */
     private Type type;
+
     /**
      * Enum representing the type of the ship.
      */
@@ -42,6 +47,7 @@ public class Ship implements Serializable {
         DESTROYER,
         FRIGATE
     }
+
     /**
      * Enum representing the direction of the ship.
      */
@@ -49,9 +55,10 @@ public class Ship implements Serializable {
         HORIZONTAL,
         VERTICAL
     }
+
     /**
      * Constructs a new Ship instance with the specified type.
-     * Randomly assigns a direction to the ship.
+     * Randomly assigns a direction to the ship and sets its length based on type.
      *
      * @param type the type of the ship
      */
@@ -79,6 +86,7 @@ public class Ship implements Serializable {
         }
 
     }
+
     /**
      * Returns the x-coordinate of the ship's tail.
      *
@@ -87,6 +95,7 @@ public class Ship implements Serializable {
     public int getTailX() {
         return tailX;
     }
+
     /**
      * Sets the x-coordinate of the ship's tail.
      *
@@ -95,6 +104,7 @@ public class Ship implements Serializable {
     public void setTailX(int tailX) {
         this.tailX = tailX;
     }
+
     /**
      * Returns the number of hits the ship has taken.
      *
@@ -103,10 +113,12 @@ public class Ship implements Serializable {
     public int getHits() {
         return hits;
     }
+
     /**
      * Increments the number of hits the ship has taken by one.
      */
     public void setHits() {this.hits += 1;}
+
     /**
      * Returns the y-coordinate of the ship's tail.
      *
@@ -115,15 +127,16 @@ public class Ship implements Serializable {
     public int getTailY() {
         return tailY;
     }
+
     /**
      * Sets the y-coordinate of the ship's tail.
      *
      * @param tailY the y-coordinate of the ship's tail
      */
-
     public void setTailY(int tailY) {
         this.tailY = tailY;
     }
+
     /**
      * Sets the direction of the ship.
      *
@@ -132,6 +145,7 @@ public class Ship implements Serializable {
     public void setOrientation(Direction direction) {
         this.direction = direction;
     }
+
     /**
      * Returns the height of the ship.
      *
@@ -140,6 +154,7 @@ public class Ship implements Serializable {
     public int getHeight() {
         return direction == Direction.VERTICAL ? length : 1;
     }
+
     /**
      * Returns the width of the ship.
      *
@@ -148,6 +163,7 @@ public class Ship implements Serializable {
     public int getWidth() {
         return direction == Direction.HORIZONTAL ? length : 1;
     }
+
     /**
      * Returns the length of the ship.
      *
@@ -156,6 +172,7 @@ public class Ship implements Serializable {
     public int getLength() {
         return length;
     }
+
     /**
      * Returns the direction of the ship.
      *
@@ -164,6 +181,7 @@ public class Ship implements Serializable {
     public Direction getDirection() {
         return direction;
     }
+
     /**
      * Sets the position of the ship's tail.
      *
@@ -174,12 +192,14 @@ public class Ship implements Serializable {
         this.tailX = x;
         this.tailY = y;
     }
+
     /**
-     * Rotates the ship's direction.
+     * Rotates the ship's direction (horizontal to vertical or vice versa).
      */
     public void rotate() {
         direction = direction == Direction.HORIZONTAL ? Direction.VERTICAL : Direction.HORIZONTAL;
     }
+
     /**
      * Checks if the specified coordinates are within the ship's position.
      *
@@ -191,8 +211,9 @@ public class Ship implements Serializable {
 
         return tailX <= x && tailX + getWidth() - 1 >= x && tailY <= y && tailY + getHeight() - 1 >= y;
     }
+
     /**
-     * Returns a Path object representing the ship's drawing.
+     * Returns a Path object representing the ship's drawing for the UI.
      *
      * @return a Path object representing the ship's drawing
      */

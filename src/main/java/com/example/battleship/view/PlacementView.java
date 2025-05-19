@@ -10,6 +10,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * PlacementView class for displaying the ship placement window in the Battleship game.
+ * Manages the loading of the FXML layout, initialization of the controller, and provides access to the controller and singleton instance.
+ *
+ * @author Grosman Garcia
+ * @version 1
+ */
 public class PlacementView extends Stage {
     /**
      * The controller associated with this view.
@@ -17,8 +24,7 @@ public class PlacementView extends Stage {
     private PlacementController placementController;
 
     /**
-     * Constructor for PlacementView.
-     * Loads the FXML layout and initializes the controller.
+     * Constructor for PlacementView. Loads the FXML layout and initializes the controller.
      *
      * @throws IOException if the FXML file cannot be loaded
      */
@@ -33,6 +39,7 @@ public class PlacementView extends Stage {
         this.setScene(scene);
         this.show();
     }
+
     /**
      * Gets the controller associated with this view.
      *
@@ -41,6 +48,7 @@ public class PlacementView extends Stage {
     public PlacementController getPlacementController() {
         return this.placementController;
     }
+
     /**
      * Gets the singleton instance of PlacementView.
      *
@@ -50,6 +58,7 @@ public class PlacementView extends Stage {
     public static PlacementView getInstance() throws IOException {
         return PlacementViewHolder.INSTANCE = new PlacementView();
     }
+
     /**
      * Holder class for the singleton instance of PlacementView.
      */

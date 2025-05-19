@@ -5,6 +5,7 @@ import com.example.battleship.model.utils.Serialization;
 import com.example.battleship.view.AlertBox;
 import com.example.battleship.view.GameView;
 import com.example.battleship.view.PlacementView;
+import com.example.battleship.view.StartView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -15,22 +16,30 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * StartController class for managing the start view and initial user interactions in the Battleship game.
+ * Handles displaying information, checking for saved games, loading games, and starting new games.
+ *
+ * @author Grosman Garcia
+ * @version 1
+ */
 public class StartController {
     /**
      * Serialization utility for saving and loading game state.
      */
     private Serialization serialization;
     /**
-     * Matrix representing the machine's board.
+     * Board representing the machine's ships and state.
      */
     private Board machineBoard;
     /**
-     * Matrix representing the player's board.
+     * Board representing the player's ships and state.
      */
     private Board playerBoard;
 
     /**
-     * Handles the action event for displaying game information.
+     * Handles the action event for displaying game information to the user.
+     * Shows an alert with instructions about the Battleship game.
      *
      * @param event the ActionEvent triggered by the user
      */
@@ -45,7 +54,8 @@ public class StartController {
 
     }
     /**
-     * Checks for a saved game and loads it if available.
+     * Checks for a saved game file and loads it if available and the user confirms.
+     * If a saved game is found, prompts the user to continue or start a new game.
      */
     public void checkAndLoadGame() {
         serialization = new Serialization();
@@ -62,6 +72,7 @@ public class StartController {
     }
     /**
      * Handles the action event for starting the game.
+     * Prompts the user for confirmation and opens the placement view if confirmed.
      *
      * @param event the ActionEvent triggered by the user
      */
@@ -75,6 +86,7 @@ public class StartController {
             {
                 PlacementView placementView = new PlacementView();
                 placementView.show();
+                StartView.deleteInstance();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -82,7 +94,8 @@ public class StartController {
 
     }
     /**
-     * Loads the saved game state.
+     * Loads the saved game state from file and opens the game view if successful.
+     * If loading fails, prints the stack trace.
      */
     public void loadGame()
     {
@@ -94,6 +107,7 @@ public class StartController {
                 playerBoard = (Board) objects.get(1);
                 GameView gameView = new GameView(machineBoard, playerBoard);
                 gameView.show();
+                StartView.deleteInstance();
             }
         }
         catch(IOException e)

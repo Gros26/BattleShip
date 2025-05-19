@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Utility class for performing CRUD operations on a file.
+ * FileCRUD class for performing Create, Read, Update, and Delete operations on a text file.
+ * Provides methods to manipulate file content line by line for the Battleship game.
+ *
+ * @author Grosman Garcia
+ * @version 1
  */
 public class FileCRUD {
 
@@ -15,15 +19,17 @@ public class FileCRUD {
     private final String filePath;
 
     /**
-     * Constructs a new fileCRUD instance with the specified file path.
+     * Constructs a new FileCRUD instance with the specified file path.
      *
      * @param filePath the path to the file
      */
     public FileCRUD(String filePath) {
         this.filePath = filePath;
     }
+
     /**
      * Creates a new line in the file with the specified content.
+     * Appends the content to the end of the file.
      *
      * @param content the content to be written to the file
      */
@@ -37,6 +43,7 @@ public class FileCRUD {
             e.printStackTrace();
         }
     }
+
     /**
      * Reads all lines from the file.
      *
@@ -55,6 +62,7 @@ public class FileCRUD {
         }
         return lines;
     }
+
     /**
      * Updates a specific line in the file with the specified content.
      *
@@ -79,6 +87,7 @@ public class FileCRUD {
             System.out.println("Invalid Line Index.");
         }
     }
+
     /**
      * Deletes a specific line from the file.
      *

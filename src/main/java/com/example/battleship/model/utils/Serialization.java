@@ -5,25 +5,31 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Utility class for serializing and deserializing objects to and from a file.
+ * Serialization utility class for serializing and deserializing objects to and from a file in the Battleship game.
+ * Provides static methods for saving, loading, and clearing game state.
+ *
+ * @author Grosman Garcia
+ * @version 1
  */
 public class Serialization {
-
     /**
-     * Path to the file used for Serialization.
+     * Path to the file used for serialization.
      */
     private static Path relativePath = Paths.get("objectsSerialization.txt");
+
     /**
-     * Returns the relative path to the Serialization file as a string.
+     * Returns the relative path to the serialization file as a string.
      *
-     * @return the relative path to the Serialization file
+     * @return the relative path to the serialization file
      */
     public static String getRelativePath() {return relativePath.toString();}
+
     /**
-     * Default constructor.
+     * Default constructor for Serialization.
      */
     public Serialization() {
     }
+
     /**
      * Serializes the given objects to the specified file.
      *
@@ -43,6 +49,7 @@ public class Serialization {
             throw new RuntimeException(e);
         }
     }
+
     /**
      * Deserializes objects from the specified file.
      *
@@ -66,6 +73,7 @@ public class Serialization {
         }
         return objects;
     }
+
     /**
      * Clears the contents of the specified file.
      *

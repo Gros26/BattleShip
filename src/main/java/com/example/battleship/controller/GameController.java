@@ -23,80 +23,88 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
+/**
+ * GameController class for managing the main game logic and user interactions in the Battleship game.
+ * Handles the drawing of boards, ships, and the processing of user and machine moves.
+ *
+ * @author Grosman Garcia
+ * @version 1
+ */
 public class GameController {
     /**
-     * Label for displaying the current turn in the game.
+     * Label displaying the current turn in the game.
      */
     @FXML
     private Label labelTurnInGame;
     /**
-     * Board representing the machine's board.
+     * Board representing the machine's ships and state.
      */
     private Board machineBoard;
     /**
-     * Board representing the player's board.
+     * Board representing the player's ships and state.
      */
     private Board playerBoard;
     /**
-     * Serialization utility for saving and loading game state.
+     * Utility for serializing and deserializing game state.
      */
     private Serialization serialization;
     /**
-     * AnchorPane for displaying the columns.
+     * AnchorPane for displaying the column labels of the player's board.
      */
     @FXML
     private AnchorPane columnsPane;
     /**
-     * AnchorPane for positioning elements.
+     * AnchorPane for displaying the player's board grid and ships.
      */
     @FXML
     private AnchorPane panePosition;
     /**
-     * AnchorPane for displaying the rows.
+     * AnchorPane for displaying the row labels of the player's board.
      */
     @FXML
     private AnchorPane rowsPane;
     /**
-     * AnchorPane for displaying the machine's columns.
+     * AnchorPane for displaying the column labels of the machine's board.
      */
     @FXML
     private AnchorPane columnsPaneMachine;
     /**
-     * AnchorPane for positioning machine elements.
+     * AnchorPane for displaying the machine's board grid and ships.
      */
     @FXML
     private AnchorPane panePositionMachine;
     /**
-     * AnchorPane for displaying the machine's rows.
+     * AnchorPane for displaying the row labels of the machine's board.
      */
     @FXML
     private AnchorPane rowsPaneMachine;
     /**
-     * Label for displaying information.
+     * Label for displaying game information and messages.
      */
     @FXML
     private Label informationLabel;
     /**
-     * Label for displaying username.
+     * Label for displaying the player's username.
      */
     @FXML
     private Label nameLabel;
     /**
-     * Game instance for managing game state.
+     * Game instance for managing the turn and game state.
      */
     private Game game;
     /**
-     * Size of the grid in pixels.
+     * Size in pixels of the game grid.
      */
     private final int GRID_SIZE = 400;
     /**
-     * Number of cells in the grid.
+     * Number of cells in each row and column of the grid.
      */
     private final int NUMBERS_CELL = 10;
     /**
-     * Size of each cell in the grid.
+     * Size in pixels of each cell in the grid.
      */
     private final int CELL_SIZE = GRID_SIZE / NUMBERS_CELL;
+
     /**
      * Sets the boards for the machine and player, initializes the game, and sets up the event handler for mouse presses.
      * Also draws the grids and ships for both the player and machine boards.
@@ -509,6 +517,9 @@ public class GameController {
         return figure;
     }
 
+    /**
+     * Redraws all hits (water, hit, and sunk) for both boards after continuing a previous game.
+     */
     public void drawHitsContinue() {
         //Redibuja todos los hits, de agua, hit normal y hundido, para ambos tableros luego de continuar con el juego anterior
         for (int i = 0; i < 10; i++) {
