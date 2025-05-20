@@ -179,7 +179,7 @@ public class Board implements Serializable {
     public boolean validatePosition(int x, int y, Ship ship) {
         Ship.Direction direction = ship.getDirection();
         int length = ship.getLength();
-        int c, r;
+        int c, r; //column, row
 
         for (int i = 0; i < length; i++) {
             r = direction == Ship.Direction.VERTICAL ? y + i : y;

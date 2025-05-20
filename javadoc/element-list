@@ -1,0 +1,6 @@
+module:com.example.battleship
+com.example.battleship
+com.example.battleship.controller
+com.example.battleship.model
+com.example.battleship.model.utils
+com.example.battleship.view
